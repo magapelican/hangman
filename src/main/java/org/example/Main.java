@@ -16,6 +16,7 @@ public class Main {
             hangmanGame.drawWord();
             System.out.println();
         }
+
     }
 
 }

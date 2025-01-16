@@ -45,6 +45,7 @@ public class HangmanGame {
     private void wonOrLost() {
         if (SCORES == 0) {
             System.out.println("You lost mate");
+            System.out.println("Word was - " + wordToGuess);
         }
         else {
             System.out.println("You won mate");
@@ -70,6 +71,5 @@ public class HangmanGame {
     public int getSCORES() {
         return SCORES;
     }
-
 
 }
