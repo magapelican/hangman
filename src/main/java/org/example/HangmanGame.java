@@ -39,6 +39,16 @@ public class HangmanGame {
         }
 
         gameOver = true;
+        wonOrLost();
+    }
+
+    private void wonOrLost() {
+        if (SCORES == 0) {
+            System.out.println("You lost mate");
+        }
+        else {
+            System.out.println("You won mate");
+        }
     }
 
     public void drawWord() {
