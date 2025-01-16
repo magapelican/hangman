@@ -2,9 +2,10 @@ package org.example;
 
 public class HangmanGame {
 
+    private static int SCORES = 9;
     private String wordToGuess;
     private boolean[] guessedLetters;
-    private boolean gameOver;
+    private boolean gameOver = false;
 
     HangmanGame() {
         this.wordToGuess = new Word().getWord();
@@ -13,20 +14,27 @@ public class HangmanGame {
 
     public void findLetterInWord(String letter) {
         int index = wordToGuess.indexOf(letter);
-
-        while(index >= 0) {
-            guessedLetters[index] = true;
-            index = wordToGuess.indexOf(letter);
+        if (index == -1) {
+            SCORES--;
         }
 
-        lookThroughArr();
+
+        while(index != -1) {
+            guessedLetters[index] = true;
+            index++;
+            index = wordToGuess.indexOf(letter, index);
+        }
+
+        controlGameState();
 
     }
 
-    private void lookThroughArr() {
-        for (int i = 1; i <= guessedLetters.length; i++) {
-            if (guessedLetters[i] != guessedLetters[i - 1]) {
-                return;
+    private void controlGameState() {
+        if (SCORES > 0) {
+            for (int i = 1; i < guessedLetters.length; i++) {
+                if (guessedLetters[i] != true) {
+                    return;
+                }
             }
         }
 
@@ -34,7 +42,7 @@ public class HangmanGame {
     }
 
     public void drawWord() {
-        for (int i = 0; i <= guessedLetters.length; i++) {
+        for (int i = 0; i < guessedLetters.length; i++) {
             if (guessedLetters[i] == true) {
                 System.out.print(wordToGuess.charAt(i));
             }
@@ -47,6 +55,10 @@ public class HangmanGame {
 
     public boolean isGameOver() {
         return gameOver;
+    }
+
+    public int getSCORES() {
+        return SCORES;
     }
 
 

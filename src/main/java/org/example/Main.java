@@ -9,11 +9,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while(!hangmanGame.isGameOver()) {
+            System.out.println("You got - " + hangmanGame.getSCORES() + " scores");
             System.out.println("Write letter: ");
             String letter = scanner.next();
-            scanner.nextLine();
             hangmanGame.findLetterInWord(letter);
             hangmanGame.drawWord();
+            System.out.println();
         }
     }
 
