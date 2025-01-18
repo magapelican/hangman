@@ -2,7 +2,7 @@ package org.example;
 
 public class HangmanGame {
 
-    private static int SCORES = 7;
+    private int SCORES = 7;
     private String wordToGuess;
     private boolean[] guessedLetters;
     private boolean gameOver = false;
@@ -13,6 +13,11 @@ public class HangmanGame {
     }
 
     public void findLetterInWord(String letter) {
+        if (!isLetter(letter)) {
+            System.out.println("Wrong input");
+            return;
+        }
+
         int index = wordToGuess.indexOf(letter);
         if (index == -1) {
             SCORES--;
@@ -27,6 +32,15 @@ public class HangmanGame {
 
         controlGameState();
 
+    }
+
+    private boolean isLetter(String character) {
+        if (Character.isLetter(character.charAt(0)) && character.length() == 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     private void controlGameState() {
