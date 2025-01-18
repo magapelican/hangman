@@ -2,7 +2,7 @@ package org.example;
 
 public class HangmanGame {
 
-    private static int SCORES = 9;
+    private static int SCORES = 7;
     private String wordToGuess;
     private boolean[] guessedLetters;
     private boolean gameOver = false;
@@ -61,7 +61,48 @@ public class HangmanGame {
                 System.out.print("*");
             }
         }
+        System.out.println();
+        drawHangman();
+    }
 
+    private void drawHangman() {
+        String[] hangMans = {
+                "----------\n1      |\n1      |\n1\n1\n1\n1\n1",
+                "----------\n1      |\n1      |\n1      0\n1\n1\n1\n1",
+                "----------\n1      |\n1      |\n1      0\n1      |\n1\n1\n1",
+                "----------\n1      |\n1      |\n1      0\n1      |\n1      |\n1\n1",
+                "----------\n1      |\n1      |\n1      0\n1      |\n1      |\n1     /\n1",
+                "----------\n1      |\n1      |\n1      0\n1      |\n1      |\n1     / \\\n1      ",
+                "----------\n1      |\n1      |\n1      0\n1     /|\n1      |\n1     / \\\n1      ",
+                "----------\n1      |\n1      |\n1      0\n1     /|\\\n1      |\n1     / \\\n1      ",
+        };
+
+        switch(SCORES) {
+            case 0:
+                System.out.print(hangMans[7]);
+                break;
+            case 1:
+                System.out.print(hangMans[6]);
+                break;
+            case 2:
+                System.out.print(hangMans[5]);
+                break;
+            case 3:
+                System.out.print(hangMans[4]);
+                break;
+            case 4:
+                System.out.print(hangMans[3]);
+                break;
+            case 5:
+                System.out.print(hangMans[2]);
+                break;
+            case 6:
+                System.out.print(hangMans[1]);
+                break;
+            case 7:
+                System.out.print(hangMans[0]);
+                break;
+        }
     }
 
     public boolean isGameOver() {
