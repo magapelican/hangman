@@ -4,9 +4,14 @@ import java.util.Scanner;
 
 public class Main {
 
+    private static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
         HangmanGame hangmanGame = new HangmanGame();
-        Scanner scanner = new Scanner(System.in);
+
+        if (enterGame() != 1) {
+            System.exit(0);
+        }
 
         while(!hangmanGame.isGameOver()) {
             System.out.println("You got - " + hangmanGame.getSCORES() + " scores");
@@ -17,6 +22,13 @@ public class Main {
             System.out.println();
         }
 
+    }
+
+    public static int enterGame() {
+        System.out.println("Menu:\n1. Play hangman\n2. Quit the game");
+        int playerChoise = scanner.nextInt();
+
+        return playerChoise;
     }
 
 }
