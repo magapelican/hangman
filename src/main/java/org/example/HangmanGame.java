@@ -1,5 +1,7 @@
 package org.example;
 
+import java.io.FileNotFoundException;
+
 public class HangmanGame {
 
     private int SCORES = 7;
@@ -7,8 +9,15 @@ public class HangmanGame {
     private boolean[] guessedLetters;
     private boolean gameOver = false;
 
-    HangmanGame() {
-        this.wordToGuess = new Word().getWord();
+    HangmanGame(int playersChoise) throws FileNotFoundException {
+        switch (playersChoise) {
+            case 1:
+                this.wordToGuess = Word.getCountryName();
+                break;
+            case 2:
+                this.wordToGuess = Word.getFruitsName();
+                break;
+        }
         guessedLetters = new boolean[wordToGuess.length()];
     }
 
@@ -80,41 +89,30 @@ public class HangmanGame {
     }
 
     private void drawHangman() {
-        String[] hangMans = {
-                "----------\n1      |\n1      |\n1\n1\n1\n1\n1",
-                "----------\n1      |\n1      |\n1      0\n1\n1\n1\n1",
-                "----------\n1      |\n1      |\n1      0\n1      |\n1\n1\n1",
-                "----------\n1      |\n1      |\n1      0\n1      |\n1      |\n1\n1",
-                "----------\n1      |\n1      |\n1      0\n1      |\n1      |\n1     /\n1",
-                "----------\n1      |\n1      |\n1      0\n1      |\n1      |\n1     / \\\n1      ",
-                "----------\n1      |\n1      |\n1      0\n1     /|\n1      |\n1     / \\\n1      ",
-                "----------\n1      |\n1      |\n1      0\n1     /|\\\n1      |\n1     / \\\n1      ",
-        };
-
         switch(SCORES) {
             case 0:
-                System.out.print(hangMans[7]);
+                System.out.print(HangmanPaint.hangMans[7]);
                 break;
             case 1:
-                System.out.print(hangMans[6]);
+                System.out.print(HangmanPaint.hangMans[6]);
                 break;
             case 2:
-                System.out.print(hangMans[5]);
+                System.out.print(HangmanPaint.hangMans[5]);
                 break;
             case 3:
-                System.out.print(hangMans[4]);
+                System.out.print(HangmanPaint.hangMans[4]);
                 break;
             case 4:
-                System.out.print(hangMans[3]);
+                System.out.print(HangmanPaint.hangMans[3]);
                 break;
             case 5:
-                System.out.print(hangMans[2]);
+                System.out.print(HangmanPaint.hangMans[2]);
                 break;
             case 6:
-                System.out.print(hangMans[1]);
+                System.out.print(HangmanPaint.hangMans[1]);
                 break;
             case 7:
-                System.out.print(hangMans[0]);
+                System.out.print(HangmanPaint.hangMans[0]);
                 break;
         }
     }
